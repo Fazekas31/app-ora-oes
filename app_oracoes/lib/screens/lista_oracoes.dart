@@ -1,3 +1,4 @@
+import 'package:app_oracoes/screens/oracao_page.dart';
 import 'package:flutter/material.dart';
 
 class ListOracoes extends StatelessWidget {
@@ -5,6 +6,25 @@ class ListOracoes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Lista de orações'),
+        ),
+        body: ListView(
+          children: [
+            Card(
+              child: ListTile(
+                leading: const FlutterLogo(),
+                title: const Text('Oração pela Manhã'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const OracaoPage()));
+                },
+              ),
+            ),
+          ],
+        ));
   }
 }

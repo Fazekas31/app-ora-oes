@@ -1,4 +1,4 @@
-import 'package:app_oracoes/screens/oracao_page.dart';
+import 'package:app_oracoes/screens/lista_oracoes.dart';
 import 'package:flutter/material.dart';
 
 class InicalScreen extends StatelessWidget {
@@ -32,7 +32,7 @@ class InicalScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const OracaoPage()));
+                        builder: (context) => const ListOracoes()));
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
