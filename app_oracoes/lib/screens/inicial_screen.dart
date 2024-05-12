@@ -1,4 +1,4 @@
-import 'package:app_oracoes/screens/lista_oracoes.dart';
+import 'package:app_oracoes/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class InicalScreen extends StatelessWidget {
@@ -29,10 +29,8 @@ class InicalScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 context;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ListOracoes()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,

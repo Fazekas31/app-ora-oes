@@ -7,24 +7,19 @@ class ListOracoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Lista de orações'),
-        ),
         body: ListView(
-          children: [
-            Card(
-              child: ListTile(
-                leading: const FlutterLogo(),
-                title: const Text('Oração pela Manhã'),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const OracaoPage()));
-                },
-              ),
-            ),
-          ],
-        ));
+      children: [
+        Card(
+          child: ListTile(
+            leading: const FlutterLogo(),
+            title: const Text('Oração pela Manhã'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const OracaoPage()));
+            },
+          ),
+        ),
+      ],
+    ));
   }
 }
