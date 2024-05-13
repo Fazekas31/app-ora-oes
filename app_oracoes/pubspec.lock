@@ -337,7 +337,7 @@ packages:
     source: hosted
     version: "2.2.0"
   nhost_dart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: nhost_dart
       sha256: "1d422219fd333230758cad55c2bc1f896fdecc04c37f4117d7e3f16e9ab9c6e1"
@@ -377,7 +377,7 @@ packages:
     source: hosted
     version: "4.0.5"
   nhost_graphql_adapter:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: nhost_graphql_adapter
       sha256: "2d2ce9669b29831c23d0cf01372df75c30f7471f5066d5a0b17c816cc13b8ed9"
@@ -385,7 +385,7 @@ packages:
     source: hosted
     version: "4.0.4"
   nhost_sdk:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: nhost_sdk
       sha256: "5765242727a36272caaabfc5ba18f3e310e70d861b9b40618ed5a0bc2fa6ce5a"
