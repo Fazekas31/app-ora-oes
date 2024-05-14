@@ -34,6 +34,7 @@ dependencies:
   nhost_flutter_graphql: ^3.0.5
   nhost_dart: ^2.0.4
   nhost_graphql_adapter: ^4.0.4
+  logger: ^2.3.0
   
 
 

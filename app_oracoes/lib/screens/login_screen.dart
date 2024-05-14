@@ -1,5 +1,7 @@
 import 'package:app_oracoes/screens/lista_oracoes.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:nhost_dart/nhost_dart.dart';
 
 void main() {
@@ -21,18 +23,24 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final logger = Logger();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Login'),
+        backgroundColor: Colors.black,
+        title: const Text(
+          'Login',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -43,21 +51,39 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: _emailController,
               decoration: const InputDecoration(
-                labelText: 'Email',
-              ),
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  )),
+              style: const TextStyle(color: Colors.white),
             ),
             const SizedBox(height: 12),
             TextField(
               controller: _passwordController,
-              obscureText: true,
               decoration: const InputDecoration(
                 labelText: 'Password',
+                labelStyle: TextStyle(color: Colors.white),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
               ),
+              style: const TextStyle(color: Colors.white),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 80, vertical: 10)),
               onPressed: _login,
-              child: const Text('Login'),
+              child: const Text(
+                'Login',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -78,13 +104,16 @@ class _LoginScreenState extends State<LoginScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      // Redirecionar para a tela ListOracoes após o login bem-sucedido
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const ListOracoes()),
-      );
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ListOracoes()),
+        );
+      }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     // Release
     client.close();
@@ -99,12 +128,20 @@ class _LoginScreenState extends State<LoginScreen> {
       await client.auth.signInEmailPassword(email: email, password: password);
       return;
     } on ApiException catch (e) {
-      print('Sign in failed, so try to register instead');
-      print(e);
+      if (kDebugMode) {
+        print('Sign in failed, so try to register instead');
+      }
+      if (kDebugMode) {
+        print(e);
+      }
       await client.auth.signUp(email: email, password: password);
     } catch (e, st) {
-      print(e);
-      print(st);
+      if (kDebugMode) {
+        print(e);
+      }
+      if (kDebugMode) {
+        print(st);
+      }
     }
   }
 }
